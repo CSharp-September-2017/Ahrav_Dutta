@@ -28,13 +28,16 @@ namespace movie_api.Controllers
                 MovieInfo = ApiResponse;
             }
             ).Wait();
-            var MovieTitle = MovieInfo;
-            Console.WriteLine(MovieTitle);
-            var Rating = MovieInfo["vote_average"];
-            var ReleaseYear = MovieInfo["release_date"];
-            string query = $"INSERT INTO movies (Title, Rating, Release_year, Created_at, Updated_at) Values('{MovieTitle}', '{Rating}', '{ReleaseYear}', NOW(), NOW()";
-            DbConnector.Execute(query);
-            return RedirectToAction("Index");
+            var MovieStuff = MovieInfo["results"];
+            Console.WriteLine(MovieStuff);
+            // var MovieTitle = MovieInfo["results"];
+            // Console.WriteLine(MovieTitle);
+            // var Rating = MovieInfo["vote_average"];
+            // var ReleaseYear = MovieInfo["release_date"];
+            // string query = $"INSERT INTO movies (Title, Rating, Release_year, Created_at, Updated_at) Values('{MovieTitle}', '{Rating}', '{ReleaseYear}', NOW(), NOW()";
+            // DbConnector.Execute(query);
+            return View("Result");
         }
+        
     }
 }
